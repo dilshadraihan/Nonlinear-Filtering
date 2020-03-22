@@ -1,2 +1,2 @@
 # Nonlinear-Filtering
-Filters for performing Bayesian state estimation for nonlinear dynamical systems
+Filters for performing Bayesian state estimation of nonlinear dynamical systems
