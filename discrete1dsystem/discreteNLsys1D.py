@@ -29,8 +29,9 @@ class discnonlexmp():
         
     def measure(self):
         meas_noise=np.random.normal(0,np.sqrt(self.R),self.N)
+        self.obs=np.zeros(self.N)
         for k in range(self.N):
             self.obs[k]=((self.state[k]**2)/20)+meas_noise[k]
-            
+         
             
             
