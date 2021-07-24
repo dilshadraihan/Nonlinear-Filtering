@@ -13,26 +13,24 @@ from PFclass import PF
 
 
 set1=discnonlexmp(10,1,0,2,100)
-pfob=PF(set1)
+
 truth=discnonlexmp(10,1,0,2,1)
 kt=set1.N*[set1.t]
 
-for k in range(20):
+ax1=plt.plot(kt,set1.state,'r',label="propagated pdf")
+ax1=plt.plot(truth.t,truth.state,'bo-',label="true state")
+
+for k in range(10):
     
-   
-
-    kt=set1.N*[set1.t]
-
-    plt.plot(kt,pfob.samp.state,'r')
-    plt.plot(truth.t,truth.state,'bo-')
-    plt.plot(truth.t,np.mean(pfob.samp.state),'g+')
+    plt.xlabel("time")
+    plt.ylabel("x")
      
     truth.forward()
-    pfob.PFpredict()
+    set1.forward()
+    kt=set1.N*[set1.t]
+    ax1=plt.plot(kt,set1.state,'r')
+    ax1=plt.plot(truth.t,truth.state,'bo-')
     
-    truth.measure()
-    yt=truth.obs
-    
-    pfob.PFupdate(yt)
-    pfob.PFresamp()
-    
+plt.legend(loc="upper right")
+   
+plt.show()
